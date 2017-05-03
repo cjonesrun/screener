@@ -14,6 +14,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import net.sarcastico.screener.R;
+import net.sarcastico.screener.tasks.FetchTask;
+
+import org.json.JSONObject;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -25,12 +28,13 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        final String token = this.getIntent().getExtras().getString("token");
+
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab_logout);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action " + this.getIntent().getExtras().getString("token"), Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                go(token);
             }
         });
 
@@ -44,6 +48,16 @@ public class MainActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
     }
 
+    public void callBack(JSONObject data) {
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab_logout);
+
+        Snackbar.make(fab, "Resp: " + data, Snackbar.LENGTH_LONG)
+                .setAction("Action", null).show();
+    }
+    private void go(String token) {
+        FetchTask task = new FetchTask(this);
+        task.execute(token);
+    }
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
