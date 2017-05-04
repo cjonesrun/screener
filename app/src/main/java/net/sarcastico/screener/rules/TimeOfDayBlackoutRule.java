@@ -12,7 +12,7 @@ import java.util.UUID;
  * Created by cj on 2017-05-03.
  */
 
-public class TimeOfDayBlackoutRule implements Rule, Comparable {
+public class TimeOfDayBlackoutRule extends BaseRule {
 
     private int startHour, startMin, endHour, endMin;
     int priority = 2;
@@ -32,12 +32,7 @@ public class TimeOfDayBlackoutRule implements Rule, Comparable {
         this.endHour = eh;
         this.endMin = em;
 
-        this.name = this.getClass().getSimpleName()+ UUID.randomUUID().toString();
-    }
-
-    @Override
-    public int compareTo(@NonNull Object o) {
-        return this.getName().compareTo(((Rule)o).getName());
+        this.name = this.getClass().getSimpleName() + UUID.randomUUID().toString();
     }
 
     public String toString() {

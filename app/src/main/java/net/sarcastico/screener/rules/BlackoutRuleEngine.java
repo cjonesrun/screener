@@ -11,8 +11,9 @@ public class BlackoutRuleEngine {
         BlackoutRuleEngine engine = new BlackoutRuleEngine();
 
         // register rules
+
         engine.addRule(new TimeOfDayBlackoutRule(2,7,0,8,0));
-        engine.addRule(new TimeOfDayBlackoutRule(2,8,0,8,15));
+        engine.addRule(new TimeOfDayBlackoutRule(2,8,0,9,15));
         engine.addRule(new TimeOfDayBlackoutRule(2,22,0,23,59));
 
         engine.checkRules();
@@ -40,7 +41,7 @@ public class BlackoutRuleEngine {
     public boolean checkRules()
     {
         RulesContext.put("status","OK");
-        RulesContext.put("message","initial-state");
+        RulesContext.put("message","rules ok");
 
         engine.fireRules();
 
