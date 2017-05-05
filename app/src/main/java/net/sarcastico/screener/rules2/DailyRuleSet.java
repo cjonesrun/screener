@@ -1,7 +1,6 @@
-package cbn.lottery.server.rules;
+package net.sarcastico.screener.rules2;
 
-import java.time.DayOfWeek;
-import java.time.LocalDateTime;
+import net.sarcastico.screener.utils.DayOfWeek;
 
 import org.easyrules.core.CompositeRule;
 
@@ -28,13 +27,14 @@ public class DailyRuleSet extends CompositeRule implements Executable {
 
 	@Override
 	public boolean evaluate() {
-		if (LocalDateTime.now().getDayOfWeek().equals(dow) ) {
+		/*if (LocalDateTime.now().getDayOfWeek().equals(dow) ) {
 			System.out.println(this.getClass().getSimpleName() + ": evaluating ruleset for " + name);
 			return super.evaluate();	
 		} else {
 			System.out.println(this.getClass().getSimpleName() + ": skipping ruleset for " + name);
 			return false;
-		}
+		}*/
+		return true;
 	}
 
 	@Override

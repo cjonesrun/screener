@@ -1,4 +1,4 @@
-package cbn.lottery.server.rules;
+package net.sarcastico.screener.rules2;
 
 import org.easyrules.api.Rule;
 import org.easyrules.api.RuleListener;

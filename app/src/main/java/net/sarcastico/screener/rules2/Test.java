@@ -1,9 +1,7 @@
-package cbn.lottery.server.rules;
+package net.sarcastico.screener.rules2;
 
-import java.time.DayOfWeek;
-import java.time.LocalTime;
-import java.time.temporal.ChronoField;
-import java.time.temporal.ChronoUnit;
+import net.sarcastico.screener.utils.DayOfWeek;
+import net.sarcastico.screener.utils.Time;
 
 public class Test {
 
@@ -33,8 +31,8 @@ public class Test {
 	public static void buildWeeklyRuleSets(Engine e) {
 		
 		// THURSDAY rules
-		e.addRule(new BasicTimeRule(DayOfWeek.THURSDAY + "-rule-12-to-18", 2, LocalTime.of(12, 0), LocalTime.of(18, 0)));
-		e.addRule(new BasicTimeRule(DayOfWeek.THURSDAY + "-rule-10-to-12", 3, LocalTime.of(10, 0), LocalTime.of(12, 0)));
+		e.addRule(new BasicTimeRule(DayOfWeek.THURSDAY, 2, Time.of(12, 0), Time.of(18, 0)));
+		e.addRule(new BasicTimeRule(DayOfWeek.THURSDAY, 3, Time.of(10, 0), Time.of(12, 0)));
 		
 		
 		/*RuleSet tue = new RuleSet();
@@ -44,4 +42,6 @@ public class Test {
 		RuleSet sat = new RuleSet();
 		RuleSet sun = new RuleSet();*/
 	}
+
+
 }

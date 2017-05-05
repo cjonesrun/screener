@@ -2,10 +2,6 @@ package net.sarcastico.screener.utils;
 
 import android.util.Log;
 
-import org.easyrules.annotation.Action;
-import org.easyrules.annotation.Condition;
-import org.easyrules.annotation.Rule;
-import org.easyrules.api.RulesEngine;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.json.JSONTokener;
@@ -19,9 +15,6 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.HashMap;
-
-import static org.easyrules.core.RulesEngineBuilder.aNewRulesEngine;
-
 
 /**
  * Utils
@@ -150,27 +143,6 @@ public class Util {
         } catch (IOException e) {
             e.printStackTrace();
             return null;
-        }
-    }
-
-
-    public static final void main(String[] s) throws Exception {
-        RulesEngine rulesEngine = aNewRulesEngine().build();
-        //register the rule
-        rulesEngine.registerRule(new MyRule());
-        //fire rules
-        rulesEngine.fireRules();
-    }
-
-    @Rule(name = "my awesome rule" )
-    static class MyRule {
-        @Condition
-        public boolean when() {
-            return true;
-        }
-        @Action
-        public void then() {
-            System.out.println("Easy Rules rocks!");
         }
     }
 }

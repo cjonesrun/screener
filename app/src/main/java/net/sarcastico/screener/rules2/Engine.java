@@ -1,6 +1,7 @@
-package cbn.lottery.server.rules;
+package net.sarcastico.screener.rules2;
 
-import java.time.LocalTime;
+import net.sarcastico.screener.utils.Time;
+
 import java.util.Set;
 
 import org.easyrules.api.Rule;
@@ -23,7 +24,7 @@ public class Engine {
 				//.withSkipOnFirstAppliedRule(true)
 				//.withSkipOnFirstFailedRule(true)
 				//.withSkipOnFirstNonTriggeredRule(true)
-				.withSilentMode(false)
+				.withSilentMode(true)
 				.build();
 		if (rules != null) {
 			for (Rule r : rules) {
@@ -33,7 +34,7 @@ public class Engine {
 	}
 	
 	public void fire() {
-		System.out.println("-- engine fire " + LocalTime.now());
+		System.out.println("-- engine fire " + Time.now());
 		engine.fireRules();
 		okAll = true;
 		okAtLeastOne = false;
